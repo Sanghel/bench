@@ -16,7 +16,9 @@ coverage
 # Herramientas de editor/IDE — nunca al repo
 .vscode/
 .cursor/
-.claude/
+.claude/*
+# Spec Kit skills (/speckit-*) are shared with the repo
+!.claude/skills/
 .idea
 .DS_Store
 *.suo
