@@ -1,0 +1,6 @@
+.hero {
+  --mx: 50%;
+  --my: 30%;
+  position: relative;
+  overflow: hidden;
+}

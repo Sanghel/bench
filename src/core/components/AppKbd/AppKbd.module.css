@@ -1,0 +1,23 @@
+.kbd {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.5;
+  padding: 1px 5px;
+  border-radius: var(--radius-xs);
+  color: inherit;
+}
+
+.plain {
+  border: 1px solid var(--border);
+}
+
+.raised {
+  padding: 1px 6px;
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  color: var(--text-muted);
+}
+
+.inverse {
+  background: color-mix(in srgb, var(--ink-fg) 16%, transparent);
+}

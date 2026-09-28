@@ -1,0 +1,17 @@
+.item {
+  color: var(--text-muted);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.item:hover {
+  color: var(--text);
+}
+
+.soon {
+  cursor: default;
+}
+
+.soon:hover {
+  color: var(--text-muted);
+}
