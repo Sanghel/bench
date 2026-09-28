@@ -1,0 +1,83 @@
+/* Ink × Cobalt color tokens — design/project/Bench Design System v3.dc.html.
+   Ink does the work, cobalt points: primary actions use --ink, cobalt is only
+   for focus, selection, active navigation and links. Green, red and amber are
+   reserved for meaning. The store writes `data-theme` on <html>. */
+:root,
+[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: #fafafb;
+  --surface: #ffffff;
+  --surface-2: #f2f2f4;
+  --border: #e4e4e8;
+  --border-strong: #c9c9cf;
+  --text: #111113;
+  --text-muted: #5e5e66;
+
+  --accent: #2f5bea;
+  --accent-hover: #2449c9;
+  --accent-tint: #e7edfd;
+  --accent-text: #1d3aa3;
+  --accent-contrast: #ffffff;
+
+  --success: #1c7f45;
+  --success-bg: #e3f4e8;
+  --danger: #c23a2b;
+  --danger-bg: #fbe7e4;
+  --warning: #8a5a00;
+  --warning-bg: #fdf1d8;
+
+  /* Ink — primary action fill, its foreground and its hover. */
+  --ink: #111113;
+  --ink-fg: #fafafb;
+  --ink-hover: #2c2c31;
+
+  /* Syntax — strings reuse --success. */
+  --syntax-number: #a85a00;
+  --syntax-bool: #9b3a8c;
+
+  --shadow-1: 0 1px 2px rgba(17, 17, 19, 0.06);
+  --shadow-2: 0 8px 24px rgba(17, 17, 19, 0.08), 0 1px 3px rgba(17, 17, 19, 0.06);
+  --shadow-segment: 0 1px 2px rgba(0, 0, 0, 0.12);
+
+  /* Landing hero cursor light. */
+  --glow: rgba(47, 91, 234, 0.1);
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg: #0a0a0c;
+  --surface: #111114;
+  --surface-2: #1b1b1f;
+  --border: #27272c;
+  --border-strong: #3a3a41;
+  --text: #ededf0;
+  --text-muted: #a0a0a9;
+
+  --accent: #7d9cff;
+  --accent-hover: #9db4ff;
+  --accent-tint: #1c2442;
+  --accent-text: #b9c9ff;
+  --accent-contrast: #0b1330;
+
+  --success: #55c787;
+  --success-bg: #15301f;
+  --danger: #f27a6a;
+  --danger-bg: #3a1a16;
+  --warning: #e6b450;
+  --warning-bg: #33280f;
+
+  --ink: #ededf0;
+  --ink-fg: #0a0a0c;
+  --ink-hover: #d2d2d8;
+
+  --syntax-number: #f0a35c;
+  --syntax-bool: #e08ad4;
+
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-2: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-segment: 0 1px 2px rgba(0, 0, 0, 0.12);
+
+  --glow: rgba(125, 156, 255, 0.13);
+}

@@ -1,0 +1,110 @@
+.hero {
+  position: relative;
+  z-index: 1;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 96px var(--gutter) 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-6);
+}
+
+.announcement {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  max-width: 100%;
+  padding: 4px var(--space-3) 4px 4px;
+  font-size: 13px;
+  white-space: nowrap;
+  color: var(--text-muted);
+  text-decoration: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+}
+
+.announcement:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+
+.announcementBadge {
+  font-size: 12px;
+}
+
+.announcementText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.announcementArrow {
+  flex: none;
+}
+
+.title {
+  margin: 0;
+  max-width: 900px;
+  font-size: clamp(40px, 6.4vw, 76px);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.subtitle {
+  margin: 0;
+  max-width: 620px;
+  font-size: clamp(16px, 1.6vw, 19px);
+  line-height: 1.55;
+  color: var(--text-muted);
+  text-wrap: pretty;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: var(--space-2);
+}
+
+.searchCta {
+  padding: 0 var(--space-4) 0 var(--space-5);
+  gap: 10px;
+}
+
+.keys {
+  display: flex;
+  gap: 3px;
+}
+
+.checks {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.checkIcon {
+  color: var(--success);
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 64px var(--space-4) 40px;
+  }
+}

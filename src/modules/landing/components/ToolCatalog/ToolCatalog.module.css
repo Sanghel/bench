@@ -1,0 +1,29 @@
+.section {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 96px var(--gutter);
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  scroll-margin-top: var(--header-height);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-3);
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 72px var(--space-4);
+  }
+}
