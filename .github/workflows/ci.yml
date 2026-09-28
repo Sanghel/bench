@@ -31,6 +31,7 @@ jobs:
               - 'vitest.config.ts'
               - 'eslint.config.js'
               - 'index.html'
+              - 'vercel.json'
 
   lint:
     name: Lint

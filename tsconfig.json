@@ -7,6 +7,9 @@
     "skipLibCheck": true,
     "ignoreDeprecations": "6.0",
     "baseUrl": "src",
+    "paths": {
+      "vercel.json": ["../vercel.json"]
+    },
 
     /* Bundler mode */
     "moduleResolution": "bundler",

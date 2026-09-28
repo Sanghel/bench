@@ -25,7 +25,7 @@ Map of content for the bench. vault. Rules for writing specs: `rules/specs.md`.
 | [[BENCH-DS-001 Ink × Cobalt tokens]] | Color, type, shape, core components | 1     | implemented |
 | [[BENCH-LAND-001 Landing page]]      | Public landing at `/`               | 1     | implemented |
 | [[BENCH-TOOLS-001 Tools dashboard]]  | Dashboard shell + live tools        | 2     | draft       |
-| [[BENCH-PLAT-002 Vercel deployment]] | Production deploys from `main`      | 2     | draft       |
+| [[BENCH-PLAT-002 Vercel deployment]] | Production deploys from `main`      | 2     | accepted    |
 
 ## Decisions (ADR)
 
@@ -40,11 +40,16 @@ Map of content for the bench. vault. Rules for writing specs: `rules/specs.md`.
 | ------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
 | DEC-001 | Where do **Changelog** and **Privacy** link? Rendered as "Coming soon" for now.                                        | [[BENCH-LAND-001 Landing page]]      |
 | DEC-002 | GitHub link: profile (`github.com/Sanghel`, current) or the bench repo once public?                                    | [[BENCH-LAND-001 Landing page]]      |
-| DEC-003 | Hosting / deploy target (Vercel, Netlify, nginx container like FMF?). Vercel proposed in BENCH-PLAT-002.               | [[BENCH-PLAT-001 Base project]]      |
 | DEC-004 | Tool descriptions differ between the landing and dashboard designs (Base64, UUID, Hash). Landing copy is used for now. | [[BENCH-TOOLS-001 Tools dashboard]]  |
 | DEC-005 | ⌘K on the landing navigates to `/tools` and opens the palette there. Or should the palette open in place?              | [[BENCH-TOOLS-001 Tools dashboard]]  |
-| DEC-006 | Production domain: `*.vercel.app` or a custom domain?                                                                  | [[BENCH-PLAT-002 Vercel deployment]] |
 | DEC-007 | Node version: CI/`.nvmrc` on 20 (EOL) vs what Vercel builds with.                                                      | [[BENCH-PLAT-002 Vercel deployment]] |
+
+## Resolved decisions
+
+| ID      | Decision                                              | Where                                |
+| ------- | ----------------------------------------------------- | ------------------------------------ |
+| DEC-003 | Hosting: Vercel, production deploys from `main` only. | [[BENCH-PLAT-002 Vercel deployment]] |
+| DEC-006 | Production domain: `bench.sanghel.dev`.               | [[BENCH-PLAT-002 Vercel deployment]] |
 
 ## Design source
 
