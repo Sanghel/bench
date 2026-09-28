@@ -18,7 +18,7 @@ code:
     .github/,
   ]
 tests: [src/core/**/__tests__/]
-open_decisions: [DEC-003]
+open_decisions: []
 tags: [spec, platform, phase-1]
 ---
 
@@ -36,7 +36,7 @@ The foundation every later feature builds on. It follows [[ADR-0003 FMF front-en
 
 ## Non-goals
 
-- Deploy pipeline (DEC-003). Analytics (bench tracks nothing, by design).
+- Deploy pipeline, see [[BENCH-PLAT-002 Vercel deployment]]. Analytics (bench tracks nothing, by design).
 
 ## Structure
 
@@ -75,7 +75,7 @@ src/
 
 ## Open decisions
 
-- **DEC-003** — Hosting target. The FMF fronts ship an nginx Dockerfile; a static host (Vercel/Netlify/Pages) is simpler here. Vercel is proposed in [[BENCH-PLAT-002 Vercel deployment]].
+- ~~**DEC-003** — Hosting target.~~ Resolved 2026-09-28: Vercel, see [[BENCH-PLAT-002 Vercel deployment]].
 
 ## Changelog
 

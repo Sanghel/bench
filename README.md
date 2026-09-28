@@ -22,6 +22,10 @@ pnpm dev           # http://localhost:5173
 | `pnpm test` / `test:coverage` | Vitest (80% gate)                       |
 | `pnpm format`                 | Prettier                                |
 
+## Deploy
+
+Hosted on Vercel at **[bench.sanghel.dev](https://bench.sanghel.dev)**. Only `main` deploys: every merge of the `develop → main` phase PR goes to production, and no other branch builds. The config lives in `vercel.json` (SPA rewrite, cache and security headers). See `specs/platform/BENCH-PLAT-002 Vercel deployment.md`.
+
 ## Repository map
 
 | Path                   | What                                                                                      |
