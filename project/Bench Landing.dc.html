@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;-webkit-font-smoothing:antialiased}
+a{color:#2f5bea;text-underline-offset:3px}
+a:hover{color:#2449c9}
+*{box-sizing:border-box}
+@keyframes bench-twinkle{0%,100%{opacity:0;transform:translateY(6px)}50%{opacity:var(--o);transform:translateY(0)}}
+</style>
+</helmet>
+<div style="{{ root }}">
+<div style="min-height:100vh;font-family:'Geist',system-ui,sans-serif;font-size:15px;display:flex;flex-direction:column">
+
+<header style="position:sticky;top:0;z-index:5;background:color-mix(in srgb, var(--bg) 85%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd)">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;gap:28px">
+    <span style="font-weight:700;font-size:21px;letter-spacing:-0.045em">bench<span style="color:var(--ac)">.</span></span>
+    <nav style="display:flex;gap:22px;font-size:14px;color:var(--mu);flex-wrap:wrap">
+      <span style="cursor:pointer" style-hover="color:var(--tx)">Tools</span>
+      <span style="cursor:pointer" style-hover="color:var(--tx)">Shortcuts</span>
+      <span style="cursor:pointer" style-hover="color:var(--tx)">Changelog</span>
+    </nav>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:8px">
+      <span style="height:34px;min-width:200px;display:flex;align-items:center;gap:8px;padding:0 8px 0 10px;border:1px solid var(--bd);background:var(--sf);color:var(--mu);border-radius:6px;font-size:13px;cursor:pointer;box-shadow:var(--sh1)" style-hover="border-color:var(--dv)"><span style="width:14px;height:14px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/search.svg) center/contain no-repeat"></span><span style="flex:1">Search tools…</span><span style="font-family:'Geist Mono',monospace;font-size:11px;padding:1px 5px;border:1px solid var(--bd);border-radius:4px">⌘K</span></span>
+      <button onClick="{{ toggleTheme }}" style="width:34px;height:34px;border:1px solid var(--bd);background:var(--sf);color:var(--mu);display:flex;align-items:center;justify-content:center;border-radius:6px;cursor:pointer;box-shadow:var(--sh1)" style-hover="color:var(--tx)"><span style="{{ themeIcon }}"></span></button>
+      <span style="width:34px;height:34px;display:flex;align-items:center;justify-content:center;color:var(--mu);cursor:pointer" style-hover="color:var(--tx)"><span style="width:17px;height:17px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/github.svg) center/contain no-repeat"></span></span>
+    </div>
+  </div>
+</header>
+
+<main style="flex:1">
+<div ref="{{ heroRef }}" onMouseMove="{{ onMove }}" style="position:relative;overflow:hidden;--mx:50%;--my:30%">
+  {{ heroBg }}
+  <section style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:96px 24px 56px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:24px">
+    <span style="display:flex;align-items:center;gap:8px;font-size:13px;padding:4px 12px 4px 4px;border:1px solid var(--bd);background:var(--sf);border-radius:999px;color:var(--mu);white-space:nowrap;max-width:100%"><span style="flex:none;font-size:12px;font-weight:500;padding:2px 8px;background:var(--act);color:var(--aco);border-radius:999px">New</span><span style="overflow:hidden;text-overflow:ellipsis">Word-level JSON diff</span><span style="flex:none;width:13px;height:13px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/arrow-right.svg) center/contain no-repeat"></span></span>
+    <h1 style="margin:0;font-size:clamp(40px, 6.4vw, 76px);font-weight:600;letter-spacing:-0.045em;line-height:1.02;max-width:900px;text-wrap:balance">The dev tools you reach for, in one quiet place.</h1>
+    <p style="margin:0;font-size:clamp(16px, 1.6vw, 19px);line-height:1.55;color:var(--mu);max-width:620px;text-wrap:pretty">Format, convert, compare and decode in your browser. Nothing is uploaded and nothing is tracked.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px">
+      <button style="white-space:nowrap;font-family:inherit;font-weight:500;font-size:15px;background:var(--pb);color:var(--pf);border:0;height:44px;padding:0 20px;display:flex;align-items:center;gap:8px;border-radius:8px;cursor:pointer" style-hover="background:var(--ph)">Open the tools<span style="width:16px;height:16px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/arrow-right.svg) center/contain no-repeat"></span></button>
+      <button style="white-space:nowrap;font-family:inherit;font-weight:500;font-size:15px;background:var(--sf);color:var(--tx);border:1px solid var(--bd);height:44px;padding:0 16px 0 20px;display:flex;align-items:center;gap:10px;border-radius:8px;cursor:pointer;box-shadow:var(--sh1)" style-hover="background:var(--sf2)">Search a tool<span style="display:flex;gap:3px"><span style="font-family:'Geist Mono',monospace;font-size:11px;padding:1px 6px;border:1px solid var(--bd);border-bottom-width:2px;border-radius:4px;color:var(--mu)">⌘</span><span style="font-family:'Geist Mono',monospace;font-size:11px;padding:1px 6px;border:1px solid var(--bd);border-bottom-width:2px;border-radius:4px;color:var(--mu)">K</span></span></button>
+    </div>
+    <div style="display:flex;gap:18px;flex-wrap:wrap;justify-content:center;font-size:13px;color:var(--mu)">
+      <span style="display:flex;align-items:center;gap:6px"><span style="width:14px;height:14px;background:var(--add);mask:url(https://unpkg.com/lucide-static@0.460.0/icons/check.svg) center/contain no-repeat"></span>Free</span>
+      <span style="display:flex;align-items:center;gap:6px"><span style="width:14px;height:14px;background:var(--add);mask:url(https://unpkg.com/lucide-static@0.460.0/icons/check.svg) center/contain no-repeat"></span>No sign-up</span>
+      <span style="display:flex;align-items:center;gap:6px"><span style="width:14px;height:14px;background:var(--add);mask:url(https://unpkg.com/lucide-static@0.460.0/icons/check.svg) center/contain no-repeat"></span>Works offline</span>
+    </div>
+  </section>
+
+  <section style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px 104px">
+    <div style="border:1px solid var(--bd);border-radius:16px;padding:8px;background:var(--sf2)">
+      <div style="display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);border:1px solid var(--bd);border-radius:10px;overflow:hidden;background:var(--sf);box-shadow:var(--sh2);min-height:440px">
+        <nav style="display:flex;flex-direction:column;gap:14px;padding:14px 10px;border-right:1px solid var(--bd);background:var(--bg);font-size:13px">
+          <span style="height:32px;display:flex;align-items:center;gap:7px;padding:0 9px;border:1px solid var(--bd);background:var(--sf);color:var(--mu);border-radius:6px"><span style="width:13px;height:13px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/search.svg) center/contain no-repeat"></span><span style="flex:1">Search</span><span style="font-family:'Geist Mono',monospace;font-size:10px">⌘K</span></span>
+          <div style="display:flex;flex-direction:column;gap:1px">
+            <span style="font-size:12px;font-weight:500;color:var(--mu);padding:4px 8px">Format</span>
+            <span style="display:flex;align-items:center;gap:8px;padding:6px 8px;background:var(--act);color:var(--aco);font-weight:500;border-radius:6px"><span style="width:14px;height:14px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/braces.svg) center/contain no-repeat"></span>JSON Formatter</span>
+            <span style="display:flex;align-items:center;gap:8px;padding:6px 8px;color:var(--mu)"><span style="width:14px;height:14px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/database.svg) center/contain no-repeat"></span>SQL Formatter</span>
+            <span style="font-size:12px;font-weight:500;color:var(--mu);padding:12px 8px 4px">Convert</span>
+            <span style="display:flex;align-items:center;gap:8px;padding:6px 8px;color:var(--mu)"><span style="width:14px;height:14px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/file-json.svg) center/contain no-repeat"></span>JSON → TypeScript</span>
+            <span style="display:flex;align-items:center;gap:8px;padding:6px 8px;color:var(--mu)"><span style="width:14px;height:14px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/binary.svg) center/contain no-repeat"></span>Base64</span>
+            <span style="font-size:12px;font-weight:500;color:var(--mu);padding:12px 8px 4px">Compare</span>
+            <span style="display:flex;align-items:center;gap:8px;padding:6px 8px;color:var(--mu)"><span style="width:14px;height:14px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/git-compare.svg) center/contain no-repeat"></span>Text diff</span>
+          </div>
+        </nav>
+        <div style="display:flex;flex-direction:column;min-width:0">
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--bd);flex-wrap:wrap">
+            <span style="font-weight:600;font-size:16px;letter-spacing:-0.01em;margin-right:auto">JSON Formatter</span>
+            <span style="display:flex;align-items:center;gap:8px;font-size:13px"><span style="width:30px;height:18px;background:var(--ac);border-radius:999px;display:flex;justify-content:flex-end;padding:2px"><span style="width:14px;height:14px;border-radius:50%;background:#ffffff"></span></span>Sort keys</span>
+            <button style="white-space:nowrap;font-family:inherit;font-weight:500;font-size:13px;background:var(--pb);color:var(--pf);border:0;height:32px;padding:0 12px;display:flex;align-items:center;gap:6px;border-radius:6px"><span style="width:14px;height:14px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/wand-sparkles.svg) center/contain no-repeat"></span>Format</button>
+          </div>
+          <div style="flex:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+            <div style="display:flex;flex-direction:column;border-right:1px solid var(--bd);min-width:0">
+              <div style="padding:8px 14px;font-size:12px;font-weight:500;border-bottom:1px solid var(--bd)">Input</div>
+              <div style="padding:14px;font-family:'Geist Mono',monospace;font-size:12.5px;line-height:1.7;word-break:break-all;color:var(--mu)">{"name":"bench","version":"0.1.0","private":true,"tools":24,"tags":["json","diff"],"author":null}</div>
+            </div>
+            <div style="display:flex;flex-direction:column;min-width:0;background:var(--bg)">
+              <div style="display:flex;align-items:center;padding:8px 14px;font-size:12px;border-bottom:1px solid var(--bd)"><span style="flex:1;font-weight:500">Output</span><span style="display:flex;align-items:center;gap:5px;color:var(--mu)"><span style="width:13px;height:13px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/copy.svg) center/contain no-repeat"></span>Copy</span></div>
+              <div style="display:grid;grid-template-columns:32px 1fr;padding:14px 0;font-family:'Geist Mono',monospace;font-size:12.5px;line-height:1.75">
+                <div style="display:flex;flex-direction:column;text-align:right;padding-right:10px;color:var(--mu);opacity:0.6"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div>
+                <div style="display:flex;flex-direction:column;white-space:pre;color:var(--mu);overflow:hidden">
+                  <span>{</span>
+                  <span>  <span style="color:var(--aco)">"author"</span>: <span style="color:var(--sb)">null</span>,</span>
+                  <span>  <span style="color:var(--aco)">"name"</span>: <span style="color:var(--add)">"bench"</span>,</span>
+                  <span style="background:var(--act);margin-right:12px;border-radius:4px">  <span style="color:var(--aco)">"private"</span>: <span style="color:var(--sb)">true</span>,</span>
+                  <span>  <span style="color:var(--aco)">"tags"</span>: [<span style="color:var(--add)">"json"</span>, <span style="color:var(--add)">"diff"</span>],</span>
+                  <span>  <span style="color:var(--aco)">"tools"</span>: <span style="color:var(--sn)">24</span>,</span>
+                  <span>  <span style="color:var(--aco)">"version"</span>: <span style="color:var(--add)">"0.1.0"</span></span>
+                  <span>}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:center;padding:7px 16px;border-top:1px solid var(--bd);font-size:12px;color:var(--mu);flex-wrap:wrap">
+            <span style="color:var(--add);display:flex;gap:6px;align-items:center;font-weight:500"><span style="width:6px;height:6px;border-radius:50%;background:currentColor"></span>Valid JSON</span><span style="font-family:'Geist Mono',monospace">8 lines · 128 B</span><span style="margin-left:auto;display:flex;align-items:center;gap:5px"><span style="width:12px;height:12px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/lock.svg) center/contain no-repeat"></span>Runs locally</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+  <section style="border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);background:var(--sf)">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+      <div style="padding:40px 28px;display:flex;flex-direction:column;gap:12px;border-right:1px solid var(--bd)">
+        <span style="width:36px;height:36px;border-radius:8px;background:var(--act);color:var(--aco);display:flex;align-items:center;justify-content:center"><span style="width:18px;height:18px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/lock.svg) center/contain no-repeat"></span></span>
+        <h3 style="margin:0;font-size:18px;font-weight:600;letter-spacing:-0.015em">Private by default</h3>
+        <p style="margin:0;color:var(--mu);line-height:1.55;text-wrap:pretty">Everything runs on your device. Paste tokens, keys and customer data without a second thought.</p>
+      </div>
+      <div style="padding:40px 28px;display:flex;flex-direction:column;gap:12px;border-right:1px solid var(--bd)">
+        <span style="width:36px;height:36px;border-radius:8px;background:var(--act);color:var(--aco);display:flex;align-items:center;justify-content:center"><span style="width:18px;height:18px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/command.svg) center/contain no-repeat"></span></span>
+        <h3 style="margin:0;font-size:18px;font-weight:600;letter-spacing:-0.015em">Keyboard-first</h3>
+        <p style="margin:0;color:var(--mu);line-height:1.55;text-wrap:pretty">Jump to any tool with ⌘K, format with ⌘↵ and copy the output with ⇧⌘C.</p>
+      </div>
+      <div style="padding:40px 28px;display:flex;flex-direction:column;gap:12px">
+        <span style="width:36px;height:36px;border-radius:8px;background:var(--act);color:var(--aco);display:flex;align-items:center;justify-content:center"><span style="width:18px;height:18px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/zap.svg) center/contain no-repeat"></span></span>
+        <h3 style="margin:0;font-size:18px;font-weight:600;letter-spacing:-0.015em">Instant results</h3>
+        <p style="margin:0;color:var(--mu);line-height:1.55;text-wrap:pretty">Output updates as you type. No buttons to hunt for and no loading spinners.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1200px;margin:0 auto;padding:96px 24px;display:flex;flex-direction:column;gap:36px">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <h2 style="margin:0;font-size:clamp(28px, 3.4vw, 40px);font-weight:600;letter-spacing:-0.035em;line-height:1.1">Every tool, one shortcut away</h2>
+        <p style="margin:0;color:var(--mu);font-size:16px">{{ toolCount }} tools across five categories.</p>
+      </div>
+      <div style="display:flex;padding:3px;gap:2px;background:var(--sf2);border-radius:8px;font-size:13px;font-weight:500;flex-wrap:wrap">
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="6">
+          <span onClick="{{ f.onClick }}" style="{{ f.style }}">{{ f.label }}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px">
+      <sc-for list="{{ tools }}" as="t" hint-placeholder-count="8">
+        <div style="background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--sh1);cursor:pointer" style-hover="border-color:var(--dv);box-shadow:var(--sh2)">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="width:36px;height:36px;border-radius:8px;background:var(--sf2);display:flex;align-items:center;justify-content:center"><span style="{{ t.iconStyle }}"></span></span>
+            <sc-if value="{{ t.isNew }}" hint-placeholder-val="{{ false }}"><span style="font-size:11px;font-weight:500;padding:2px 8px;background:var(--act);color:var(--aco);border-radius:999px">New</span></sc-if>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font-weight:600;font-size:15px">{{ t.name }}</span>
+            <span style="font-size:13.5px;color:var(--mu);line-height:1.45">{{ t.desc }}</span>
+          </div>
+          <span style="align-self:flex-start;font-size:11.5px;font-weight:500;padding:1px 8px;border:1px solid var(--bd);border-radius:999px;color:var(--mu)">{{ t.cat }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width:1200px;margin:0 auto;padding:0 24px 112px;display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center">
+    <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+      <h2 style="margin:0;font-size:clamp(28px, 3.4vw, 40px);font-weight:600;letter-spacing:-0.035em;line-height:1.1;text-wrap:balance">Paste anything. We’ll pick the tool.</h2>
+      <p style="margin:0;color:var(--mu);font-size:16px;text-wrap:pretty">Drop in JSON, a JWT, Base64, a URL or a SQL query.</p>
+    </div>
+    <div style="width:100%;max-width:780px;text-align:left;background:var(--sf);border:1px solid var(--bd);border-radius:12px;box-shadow:var(--sh2);overflow:hidden">
+      <textarea value="{{ input }}" onChange="{{ onInput }}" placeholder="Paste here…" spellcheck="false" style="display:block;width:100%;min-height:128px;resize:vertical;border:0;outline:none;background:transparent;color:var(--tx);font-family:'Geist Mono',monospace;font-size:13px;line-height:1.7;padding:16px 18px"></textarea>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 10px 10px 16px;border-top:1px solid var(--bd);background:var(--bg);flex-wrap:wrap">
+        <sc-if value="{{ hasDetect }}" hint-placeholder-val="{{ false }}">
+          <span style="display:flex;align-items:center;gap:8px;font-size:13px"><span style="width:28px;height:28px;border-radius:6px;background:var(--act);color:var(--aco);display:flex;align-items:center;justify-content:center"><span style="{{ detectIcon }}"></span></span><span style="color:var(--mu)">Looks like</span><span style="font-weight:600">{{ detectType }}</span></span>
+        </sc-if>
+        <sc-if value="{{ noDetect }}" hint-placeholder-val="{{ true }}">
+          <span style="display:flex;gap:6px;align-items:center;font-size:13px;color:var(--mu);flex-wrap:wrap">Try
+            <sc-for list="{{ samples }}" as="s" hint-placeholder-count="4">
+              <span onClick="{{ s.onClick }}" style="padding:3px 10px;border:1px solid var(--bd);background:var(--sf);border-radius:999px;cursor:pointer;color:var(--tx);font-size:12px;font-weight:500" style-hover="border-color:var(--dv)">{{ s.label }}</span>
+            </sc-for>
+          </span>
+        </sc-if>
+        <button style="margin-left:auto;white-space:nowrap;flex:none;font-family:inherit;font-weight:500;font-size:14px;background:var(--pb);color:var(--pf);border:0;height:38px;padding:0 10px 0 14px;display:flex;align-items:center;gap:10px;border-radius:6px;cursor:pointer" style-hover="background:var(--ph)">{{ ctaLabel }}<span style="font-family:'Geist Mono',monospace;font-size:11px;padding:1px 5px;border-radius:4px;background:color-mix(in srgb, var(--pf) 16%, transparent)">⌘↵</span></button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer style="border-top:1px solid var(--bd)">
+  <div style="max-width:1200px;margin:0 auto;padding:28px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--mu)">
+    <span style="font-weight:700;font-size:16px;letter-spacing:-0.04em;color:var(--tx)">bench<span style="color:var(--ac)">.</span></span>
+    <span style="display:flex;align-items:center;gap:5px;flex-wrap:wrap">Crafted with <span style="color:var(--rem);font-size:14px">♥</span> and <img src="https://cdn.simpleicons.org/react" alt="React" title="React" width="14" height="14" style="display:block"> <img src="https://cdn.simpleicons.org/typescript" alt="TypeScript" title="TypeScript" width="13" height="13" style="display:block"> by <a href="https://sanghel.dev" style="color:var(--tx);font-weight:500">Sanghel González</a></span>
+    <div style="margin-left:auto;display:flex;gap:20px">
+      <span style="cursor:pointer" style-hover="color:var(--tx)">GitHub</span>
+      <span style="cursor:pointer" style-hover="color:var(--tx)">Changelog</span>
+      <span style="cursor:pointer" style-hover="color:var(--tx)">Privacy</span>
+    </div>
+  </div>
+</footer>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'light'|'dark'&quot;,&quot;section&quot;:&quot;Theme&quot;}}">
+const T = {
+  light: { bg: '#fafafb', sf: '#ffffff', sf2: '#f2f2f4', tx: '#111113', mu: '#5e5e66', bd: '#e4e4e8', dv: '#c9c9cf', inkh: '#2c2c31',
+    ac: '#2f5bea', act: '#e7edfd', aco: '#1d3aa3', add: '#1c7f45', sn: '#a85a00', sb: '#9b3a8c', rem: '#c23a2b', glow: 'rgba(47,91,234,0.10)',
+    sh1: '0 1px 2px rgba(17,17,19,0.06)', sh2: '0 8px 24px rgba(17,17,19,0.08), 0 1px 3px rgba(17,17,19,0.06)' },
+  dark: { bg: '#0a0a0c', sf: '#111114', sf2: '#1b1b1f', tx: '#ededf0', mu: '#a0a0a9', bd: '#27272c', dv: '#3a3a41', inkh: '#d2d2d8',
+    ac: '#7d9cff', act: '#1c2442', aco: '#b9c9ff', add: '#55c787', sn: '#f0a35c', sb: '#e08ad4', rem: '#f27a6a', glow: 'rgba(125,156,255,0.13)',
+    sh1: '0 1px 2px rgba(0,0,0,0.4)', sh2: '0 8px 24px rgba(0,0,0,0.5)' }
+};
+const TOOLS = [
+  ['JSON Formatter', 'Beautify, validate and minify JSON.', 'Format', 'braces'],
+  ['SQL Formatter', 'Readable queries for any dialect.', 'Format', 'database'],
+  ['XML Formatter', 'Indent and validate XML.', 'Format', 'code-xml'],
+  ['JSON → TypeScript', 'Generate interfaces from a sample.', 'Convert', 'file-json'],
+  ['YAML ↔ JSON', 'Convert config files both ways.', 'Convert', 'arrow-left-right'],
+  ['Base64', 'Encode and decode text or files.', 'Convert', 'binary'],
+  ['URL Encode', 'Escape and unescape query strings.', 'Convert', 'link'],
+  ['Case Converter', 'camelCase, snake_case, kebab-case…', 'Convert', 'type'],
+  ['Text Diff', 'Compare two texts line by line.', 'Compare', 'git-compare'],
+  ['JSON Diff', 'Semantic diff that ignores key order.', 'Compare', 'git-compare-arrows', true],
+  ['JWT Debugger', 'Decode and inspect tokens.', 'Inspect', 'key-round'],
+  ['Regex Tester', 'Live matches with group highlights.', 'Inspect', 'regex'],
+  ['UUID Generator', 'v4 and v7, one or a thousand.', 'Generate', 'fingerprint'],
+  ['Hash Generator', 'MD5, SHA-1, SHA-256 and more.', 'Generate', 'hash']
+];
+const CATS = ['All', 'Format', 'Convert', 'Compare', 'Inspect', 'Generate'];
+
+const SYMS = ['{ }', '</>', '=>', '[ ]', '( )', '#', '$', '&&', '::', '0x1F', '//', '===', 'λ', '*', ';', '?.', '...', '++', '!=', '|>', '@', '%', '"…"', '<T>'];
+const DETECT = [
+  [s => /^eyJ[\w-]*\.[\w-]+\.[\w-]*$/.test(s), 'a JWT', 'JWT Debugger', 'key-round'],
+  [s => { try { const v = JSON.parse(s); return v !== null && typeof v === 'object'; } catch (e) { return false; } }, 'JSON', 'JSON Formatter', 'braces'],
+  [s => /^https?:\/\/\S+$/i.test(s), 'a URL', 'URL Encode', 'link'],
+  [s => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(s), 'a UUID', 'UUID Generator', 'fingerprint'],
+  [s => /^(select|insert|update|delete|with|create)\b/i.test(s), 'SQL', 'SQL Formatter', 'database'],
+  [s => /^<[\s\S]*>$/.test(s), 'XML', 'XML Formatter', 'code-xml'],
+  [s => s.length >= 8 && s.length % 4 === 0 && /^[A-Za-z0-9+/]+={0,2}$/.test(s), 'Base64', 'Base64', 'binary'],
+  [s => true, 'plain text', 'Case Converter', 'type']
+];
+const SAMPLES = [
+  ['JSON', '{"name":"bench","tools":14,"private":true}'],
+  ['JWT', 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NSIsIm5hbWUiOiJCZW5jaCJ9.dBjftJeZ4CVPmB92K27uhbUJU1p1r_wW1gFWFOEjXk'],
+  ['Base64', 'aGVsbG8gZnJvbSBiZW5jaA=='],
+  ['SQL', 'select id, name from tools where category = \'format\' order by name']
+];
+
+class Component extends DCLogic {
+  state = { theme: null, cat: 'All', input: '' };
+  heroRef = React.createRef();
+  glyphs = (() => {
+    let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const out = [];
+    while (out.length < 54) {
+      const x = rnd() * 100, y = rnd() * 100;
+      if (x > 22 && x < 78 && y > 8 && y < 42 && rnd() > 0.2) continue;
+      out.push({ x, y, s: SYMS[Math.floor(rnd() * SYMS.length)], size: 12 + rnd() * 12, dur: 4 + rnd() * 6, delay: -rnd() * 10, o: 0.25 + rnd() * 0.35, accent: rnd() < 0.18 });
+    }
+    return out;
+  })();
+  componentDidMount() { this.reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; if (this.reduce) this.forceUpdate(); }
+  onMove = e => { const el = this.heroRef.current; if (!el) return; const r = el.getBoundingClientRect(); el.style.setProperty('--mx', (e.clientX - r.left) + 'px'); el.style.setProperty('--my', (e.clientY - r.top) + 'px'); };
+  bg() {
+    const h = React.createElement, reduce = this.reduce;
+    const layer = (accent) => h('div', { key: accent ? 'ga' : 'gm', style: { position: 'absolute', inset: 0, pointerEvents: 'none', ...(accent ? { WebkitMaskImage: 'radial-gradient(220px circle at var(--mx) var(--my), #000, transparent 75%)', maskImage: 'radial-gradient(220px circle at var(--mx) var(--my), #000, transparent 75%)' } : {}) } },
+      this.glyphs.map((g, i) => h('span', { key: i, style: { position: 'absolute', left: g.x + '%', top: g.y + '%', fontFamily: "'Geist Mono', monospace", fontSize: g.size + 'px', fontWeight: 500, whiteSpace: 'nowrap', color: accent ? 'var(--ac)' : (g.accent ? 'var(--ac)' : 'var(--mu)'), '--o': accent ? 1 : g.o, opacity: reduce ? g.o * 0.6 : 0, animation: reduce ? 'none' : `bench-twinkle ${g.dur}s ease-in-out ${g.delay}s infinite` } }, g.s)));
+    const fade = 'linear-gradient(to bottom, #000 55%, transparent 100%)';
+    return h('div', { 'aria-hidden': true, style: { position: 'absolute', inset: 0, pointerEvents: 'none', WebkitMaskImage: fade, maskImage: fade } }, [
+      h('div', { key: 'dots', style: { position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle, var(--dv) 1px, transparent 1.4px)', backgroundSize: '24px 24px', opacity: 0.45 } }),
+      h('div', { key: 'glow', style: { position: 'absolute', inset: 0, background: 'radial-gradient(560px circle at var(--mx) var(--my), var(--glow), transparent 70%)' } }),
+      h('div', { key: 'hot', style: { position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle, var(--ac) 1.2px, transparent 1.7px)', backgroundSize: '24px 24px', WebkitMaskImage: 'radial-gradient(240px circle at var(--mx) var(--my), #000, transparent 70%)', maskImage: 'radial-gradient(240px circle at var(--mx) var(--my), #000, transparent 70%)', opacity: 0.7 } }),
+      layer(false), layer(true)
+    ]);
+  }
+  renderVals() {
+    const mode = this.state.theme || (this.props.theme === 'dark' ? 'dark' : 'light');
+    const t = T[mode];
+    const root = {
+      '--bg': t.bg, '--sf': t.sf, '--sf2': t.sf2, '--tx': t.tx, '--mu': t.mu, '--bd': t.bd, '--dv': t.dv,
+      '--ac': t.ac, '--act': t.act, '--aco': t.aco, '--add': t.add, '--sn': t.sn, '--sb': t.sb,
+      '--pb': t.tx, '--pf': t.bg, '--ph': t.inkh, '--sh1': t.sh1, '--sh2': t.sh2,
+      '--rem': t.rem, '--glow': t.glow,
+      background: t.bg, color: t.tx
+    };
+    const s = this.state.input.trim();
+    const d = s ? DETECT.find(x => x[0](s)) : null;
+    const icon = n => ({ width: '18px', height: '18px', background: 'currentColor', mask: `url(https://unpkg.com/lucide-static@0.460.0/icons/${n}.svg) center/contain no-repeat`, WebkitMask: `url(https://unpkg.com/lucide-static@0.460.0/icons/${n}.svg) center/contain no-repeat` });
+    const cat = this.state.cat;
+    return {
+      root,
+      heroRef: this.heroRef, onMove: this.onMove, heroBg: this.bg(),
+      input: this.state.input, onInput: e => this.setState({ input: e.target.value }),
+      hasDetect: !!d, noDetect: !d, detectType: d ? d[1] : '', detectIcon: d ? { ...icon(d[3]), width: '15px', height: '15px' } : {},
+      ctaLabel: d ? 'Open ' + d[2] : 'Browse all tools',
+      samples: SAMPLES.map(([label, v]) => ({ label, onClick: () => this.setState({ input: v }) })),
+      themeIcon: { ...icon(mode === 'dark' ? 'sun' : 'moon'), width: '15px', height: '15px' },
+      toggleTheme: () => this.setState({ theme: mode === 'dark' ? 'light' : 'dark' }),
+      toolCount: TOOLS.length,
+      filters: CATS.map(c => ({ label: c, onClick: () => this.setState({ cat: c }), style: { padding: '5px 12px', borderRadius: '6px', cursor: 'pointer', ...(c === cat ? { background: 'var(--sf)', color: 'var(--tx)', boxShadow: '0 1px 2px rgba(0,0,0,0.12)' } : { color: 'var(--mu)' }) } })),
+      tools: TOOLS.filter(x => cat === 'All' || x[2] === cat).map(([name, desc, c, ic, isNew]) => ({ name, desc, cat: c, isNew: !!isNew, iconStyle: icon(ic) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

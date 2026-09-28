@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#ececee;-webkit-font-smoothing:antialiased}
+a{color:#2f5bea;text-underline-offset:3px}
+a:hover{color:#2449c9}
+*{box-sizing:border-box}
+</style>
+</helmet>
+<div style="font-family:'Geist',system-ui,sans-serif;color:#111113;width:1880px;padding:56px;display:flex;flex-direction:column;gap:40px">
+
+<header style="display:flex;justify-content:space-between;align-items:flex-end;gap:48px">
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <span style="font-size:13px;color:#5e5e66">bench. · Components v2 · Cobalt</span>
+    <h1 style="margin:0;font-size:44px;font-weight:600;letter-spacing:-0.035em;line-height:1.05">Three modern component styles</h1>
+  </div>
+  <p style="margin:0;max-width:560px;font-size:15px;line-height:1.55;color:#4a4a52;text-wrap:pretty">The same Cobalt palette and component set in three styles, from softest to most technical. Rounded corners, hairline borders and cool neutrals replace the square Modernist grid. Switch to warm neutrals in Tweaks.</p>
+</header>
+
+<section style="display:flex;gap:24px;align-items:flex-start">
+  <sc-for list="{{ styles }}" as="o" hint-placeholder-count="3">
+    <div id="{{ o.id }}" style="flex:1;min-width:0;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;flex-direction:column;gap:8px;padding:0 4px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="font-family:'Geist Mono',monospace;font-size:12px;font-weight:500;background:#111113;color:#ffffff;padding:3px 8px;border-radius:6px">{{ o.id }}</span>
+          <span style="font-size:26px;font-weight:600;letter-spacing:-0.02em">{{ o.name }}</span>
+          <span style="margin-left:auto;flex:none;white-space:nowrap;font-size:12px;font-weight:500;padding:4px 10px;border-radius:999px;background:#ffffff;border:1px solid #dcdce0">{{ o.tag }}</span>
+        </div>
+        <p style="margin:0;font-size:14px;line-height:1.5;color:#4a4a52;text-wrap:pretty;min-height:42px">{{ o.why }}</p>
+      </div>
+      <sc-for list="{{ o.modes }}" as="m" hint-placeholder-count="2">
+        <div style="{{ m.style }}">
+          <div style="padding:28px;display:flex;flex-direction:column;gap:28px;font-size:14px;font-family:var(--f)">
+            <div style="display:flex;align-items:center;gap:8px;color:var(--mu);font-size:13px"><span style="width:15px;height:15px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/{{ m.icon }}.svg) center/contain no-repeat"></span>{{ m.label }}</div>
+
+            <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+              <button style="font-family:inherit;font-weight:500;font-size:14px;background:var(--pb);color:var(--pf);border:0;height:36px;padding:0 14px;display:flex;align-items:center;gap:7px;border-radius:var(--rb);cursor:pointer;box-shadow:var(--sh1)" style-hover="background:var(--ph)"><span style="width:15px;height:15px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/wand-sparkles.svg) center/contain no-repeat"></span>Format JSON</button>
+              <button style="font-family:inherit;font-weight:500;font-size:14px;background:var(--sf);color:var(--tx);border:1px solid var(--bd);height:36px;padding:0 14px;display:flex;align-items:center;gap:7px;border-radius:var(--rb);cursor:pointer;box-shadow:var(--sh1)" style-hover="background:var(--sf2)"><span style="width:15px;height:15px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/copy.svg) center/contain no-repeat"></span>Copy</button>
+              <button style="font-family:inherit;font-weight:500;font-size:14px;background:transparent;color:var(--mu);border:0;height:36px;padding:0 12px;border-radius:var(--rb);cursor:pointer" style-hover="background:var(--sf2);color:var(--tx)">Clear</button>
+              <button style="width:36px;height:36px;background:transparent;color:var(--mu);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;border-radius:var(--rb);cursor:pointer" style-hover="background:var(--sf2);color:var(--tx)"><span style="width:15px;height:15px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/trash-2.svg) center/contain no-repeat"></span></button>
+              <button style="font-family:inherit;font-weight:500;font-size:14px;background:var(--pb);color:var(--pf);border:0;height:36px;padding:0 14px;border-radius:var(--rb);opacity:0.4" disabled="">Disabled</button>
+            </div>
+
+            <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px;font-weight:500">
+              <span style="padding:3px 9px;background:var(--act);color:var(--aco);border-radius:var(--rt)">New</span>
+              <span style="padding:2px 8px;border:1px solid var(--bd);color:var(--tx);background:var(--sf);border-radius:var(--rt)">JSON</span>
+              <span style="padding:3px 9px;background:var(--addbg);color:var(--add);display:flex;gap:5px;align-items:center;border-radius:var(--rt)"><span style="width:6px;height:6px;border-radius:50%;background:currentColor"></span>Valid</span>
+              <span style="padding:3px 9px;background:var(--rembg);color:var(--rem);border-radius:var(--rt)">3 errors</span>
+              <span style="padding:3px 9px;background:var(--warnbg);color:var(--warn);border-radius:var(--rt)">Large file</span>
+              <span style="margin-left:auto;display:flex;gap:4px"><span style="font-family:'Geist Mono',monospace;font-size:11px;min-width:22px;text-align:center;padding:2px 5px;border:1px solid var(--bd);background:var(--sf);color:var(--mu);border-radius:5px">⌘</span><span style="font-family:'Geist Mono',monospace;font-size:11px;min-width:22px;text-align:center;padding:2px 5px;border:1px solid var(--bd);background:var(--sf);color:var(--mu);border-radius:5px">K</span></span>
+            </div>
+
+            <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px">
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:var(--tx)">JSONPath
+                <div style="height:36px;border:1px solid var(--ac);background:var(--sf);border-radius:var(--ri);display:flex;align-items:center;padding:0 11px;box-shadow:0 0 0 3px var(--ring);font-family:'Geist Mono',monospace;font-size:13px;font-weight:400">$.tools[*]<span style="width:1.5px;height:16px;background:var(--ac);margin-left:1px"></span></div>
+              </label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:var(--tx)">Indent
+                <div style="height:36px;border:1px solid var(--bd);background:var(--sf);border-radius:var(--ri);display:flex;align-items:center;gap:8px;padding:0 11px;font-weight:400;box-shadow:var(--sh1)"><span style="flex:1">2 spaces</span><span style="width:15px;height:15px;background:var(--mu);mask:url(https://unpkg.com/lucide-static@0.460.0/icons/chevrons-up-down.svg) center/contain no-repeat"></span></div>
+              </label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:var(--tx)">Base64
+                <div style="height:36px;border:1px solid var(--rem);background:var(--sf);border-radius:var(--ri);display:flex;align-items:center;padding:0 11px;box-shadow:0 0 0 3px var(--rembg);font-family:'Geist Mono',monospace;font-size:13px;font-weight:400">aGVsbG8%</div>
+                <span style="font-size:12px;font-weight:400;color:var(--rem)">“%” isn’t valid Base64</span>
+              </label>
+              <div style="display:flex;flex-direction:column;gap:4px;padding:4px;border:1px solid var(--bd);background:var(--sf);border-radius:var(--rc);box-shadow:var(--sh2);font-size:13px">
+                <span style="padding:6px 8px;border-radius:calc(var(--ri) - 2px);display:flex;align-items:center;background:var(--sf2)"><span style="flex:1">2 spaces</span><span style="width:14px;height:14px;background:var(--ac);mask:url(https://unpkg.com/lucide-static@0.460.0/icons/check.svg) center/contain no-repeat"></span></span>
+                <span style="padding:6px 8px;border-radius:calc(var(--ri) - 2px)">4 spaces</span>
+                <span style="padding:6px 8px;border-radius:calc(var(--ri) - 2px)">Tab</span>
+              </div>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+              <div style="display:flex;padding:3px;gap:2px;background:var(--sf2);border-radius:calc(var(--ri) + 2px);font-size:13px;font-weight:500">
+                <span style="padding:5px 12px;background:var(--sf);color:var(--tx);border-radius:var(--ri);box-shadow:0 1px 2px rgba(0,0,0,0.12)">JSON</span>
+                <span style="padding:5px 12px;color:var(--mu)">YAML</span>
+                <span style="padding:5px 12px;color:var(--mu)">TOML</span>
+              </div>
+              <span style="display:flex;align-items:center;gap:8px;font-size:13px"><span style="width:34px;height:20px;background:var(--ac);border-radius:999px;display:flex;justify-content:flex-end;padding:2px"><span style="width:16px;height:16px;border-radius:50%;background:#ffffff;box-shadow:0 1px 2px rgba(0,0,0,0.25)"></span></span>Sort keys</span>
+              <span style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--mu)"><span style="width:34px;height:20px;background:var(--bd);border-radius:999px;display:flex;padding:2px"><span style="width:16px;height:16px;border-radius:50%;background:#ffffff;box-shadow:0 1px 2px rgba(0,0,0,0.25)"></span></span>Wrap</span>
+            </div>
+
+            <div style="display:flex;gap:20px;border-bottom:1px solid var(--bd);font-size:13px;font-weight:500">
+              <span style="padding:8px 0;color:var(--tx);box-shadow:inset 0 -2px 0 var(--tx)">Output</span>
+              <span style="padding:8px 0;color:var(--mu)">Tree</span>
+              <span style="padding:8px 0;color:var(--mu)">TypeScript</span>
+              <span style="padding:8px 0;color:var(--mu);display:flex;align-items:center;gap:6px">Errors<span style="font-size:11px;padding:0 6px;background:var(--rembg);color:var(--rem);border-radius:999px">3</span></span>
+            </div>
+
+            <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px">
+              <div style="background:var(--sf);border:1px solid var(--bd);border-radius:var(--rc);padding:16px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--sh1)" style-hover="border-color:var(--ac)">
+                <div style="display:flex;justify-content:space-between;align-items:center"><span style="width:34px;height:34px;background:var(--act);color:var(--aco);display:flex;align-items:center;justify-content:center;border-radius:calc(var(--rc) - 4px)"><span style="width:17px;height:17px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/braces.svg) center/contain no-repeat"></span></span><span style="width:15px;height:15px;background:var(--ac);mask:url(https://unpkg.com/lucide-static@0.460.0/icons/star.svg) center/contain no-repeat"></span></div>
+                <div style="display:flex;flex-direction:column;gap:3px"><span style="font-weight:600;font-size:15px">JSON Formatter</span><span style="font-size:13px;color:var(--mu);line-height:1.4">Beautify, validate and minify.</span></div>
+              </div>
+              <div style="background:var(--sf);border:1px solid var(--bd);border-radius:var(--rc);padding:16px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--sh1)" style-hover="border-color:var(--ac)">
+                <div style="display:flex;justify-content:space-between;align-items:center"><span style="width:34px;height:34px;background:var(--sf2);color:var(--tx);display:flex;align-items:center;justify-content:center;border-radius:calc(var(--rc) - 4px)"><span style="width:17px;height:17px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/git-compare.svg) center/contain no-repeat"></span></span><span style="font-size:11px;font-weight:500;padding:2px 8px;background:var(--act);color:var(--aco);border-radius:var(--rt)">New</span></div>
+                <div style="display:flex;flex-direction:column;gap:3px"><span style="font-weight:600;font-size:15px">Text Diff</span><span style="font-size:13px;color:var(--mu);line-height:1.4">Compare two texts line by line.</span></div>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:168px minmax(0,1fr);border:1px solid var(--bd);border-radius:var(--rc);overflow:hidden;background:var(--sf);box-shadow:var(--sh2)">
+              <nav style="display:flex;flex-direction:column;gap:12px;padding:12px 8px;border-right:1px solid var(--bd);background:var(--bg);font-size:13px">
+                <span style="font-weight:700;font-size:17px;letter-spacing:-0.03em;padding:0 8px">bench<span style="color:var(--ac)">.</span></span>
+                <span style="height:30px;display:flex;align-items:center;gap:7px;padding:0 8px;border:1px solid var(--bd);background:var(--sf);color:var(--mu);border-radius:var(--ri);font-size:12px"><span style="width:13px;height:13px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/search.svg) center/contain no-repeat"></span><span style="flex:1">Search</span><span style="font-family:'Geist Mono',monospace;font-size:10px">⌘K</span></span>
+                <div style="display:flex;flex-direction:column;gap:1px">
+                  <span style="font-size:11.5px;font-weight:500;color:var(--mu);padding:4px 8px">Format</span>
+                  <span style="display:flex;align-items:center;gap:8px;padding:6px 8px;background:var(--act);color:var(--aco);font-weight:500;border-radius:calc(var(--ri) - 2px)"><span style="width:14px;height:14px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/braces.svg) center/contain no-repeat"></span>JSON</span>
+                  <span style="display:flex;align-items:center;gap:8px;padding:6px 8px;color:var(--mu);border-radius:calc(var(--ri) - 2px)"><span style="width:14px;height:14px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/database.svg) center/contain no-repeat"></span>SQL</span>
+                  <span style="font-size:11.5px;font-weight:500;color:var(--mu);padding:10px 8px 4px">Compare</span>
+                  <span style="display:flex;align-items:center;gap:8px;padding:6px 8px;color:var(--mu);border-radius:calc(var(--ri) - 2px)"><span style="width:14px;height:14px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/git-compare.svg) center/contain no-repeat"></span>Text diff</span>
+                  <span style="display:flex;align-items:center;gap:8px;padding:6px 8px;color:var(--mu);border-radius:calc(var(--ri) - 2px)"><span style="width:14px;height:14px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/binary.svg) center/contain no-repeat"></span>Base64</span>
+                </div>
+              </nav>
+              <div style="display:flex;flex-direction:column;min-width:0">
+                <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--bd)"><span style="font-weight:600;margin-right:auto">JSON Formatter</span><span style="font-size:12px;color:var(--add);display:flex;align-items:center;gap:5px"><span style="width:6px;height:6px;border-radius:50%;background:currentColor"></span>Valid</span><button style="font-family:inherit;font-weight:500;font-size:12px;background:var(--pb);color:var(--pf);border:0;height:28px;padding:0 10px;border-radius:var(--rb)">Format</button></div>
+                <div style="display:grid;grid-template-columns:22px 1fr;padding:10px 0;font-family:'Geist Mono',monospace;font-size:12px;line-height:1.7">
+                  <div style="display:flex;flex-direction:column;text-align:right;padding-right:8px;color:var(--mu);opacity:0.6"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span></div>
+                  <div style="display:flex;flex-direction:column;white-space:pre;color:var(--mu)">
+                    <span>{</span>
+                    <span>  <span style="color:var(--aco)">"name"</span>: <span style="color:var(--ss)">"bench"</span>,</span>
+                    <span style="background:var(--act);margin-right:10px;border-radius:4px">  <span style="color:var(--aco)">"private"</span>: <span style="color:var(--sb)">true</span>,</span>
+                    <span>  <span style="color:var(--aco)">"tools"</span>: <span style="color:var(--sn)">24</span>,</span>
+                    <span>  <span style="color:var(--aco)">"author"</span>: <span style="color:var(--sb)">null</span></span>
+                    <span>}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="border:1px solid var(--bd);border-radius:var(--rc);overflow:hidden;background:var(--sf);font-family:'Geist Mono',monospace;font-size:12px;line-height:1.8">
+              <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-bottom:1px solid var(--bd);font-family:var(--f);font-size:13px"><span style="font-weight:600;margin-right:auto">config.json</span><span style="color:var(--add);font-family:'Geist Mono',monospace;font-size:12px">+2</span><span style="color:var(--rem);font-family:'Geist Mono',monospace;font-size:12px">−1</span></div>
+              <div style="display:grid;grid-template-columns:28px 16px 1fr;white-space:pre"><span style="text-align:right;padding-right:6px;color:var(--mu)">1</span><span></span><span>{</span></div>
+              <div style="display:grid;grid-template-columns:28px 16px 1fr;white-space:pre;background:var(--rembg)"><span style="text-align:right;padding-right:6px;color:var(--rem)">2</span><span style="color:var(--rem)">−</span><span>  "port": <span style="background:color-mix(in srgb, var(--rem) 24%, transparent);color:var(--rem);border-radius:3px">3000</span>,</span></div>
+              <div style="display:grid;grid-template-columns:28px 16px 1fr;white-space:pre;background:var(--addbg)"><span style="text-align:right;padding-right:6px;color:var(--add)">2</span><span style="color:var(--add)">+</span><span>  "port": <span style="background:color-mix(in srgb, var(--add) 24%, transparent);color:var(--add);border-radius:3px">8080</span>,</span></div>
+              <div style="display:grid;grid-template-columns:28px 16px 1fr;white-space:pre;background:var(--addbg)"><span style="text-align:right;padding-right:6px;color:var(--add)">3</span><span style="color:var(--add)">+</span><span>  "cache": true,</span></div>
+              <div style="display:grid;grid-template-columns:28px 16px 1fr;white-space:pre"><span style="text-align:right;padding-right:6px;color:var(--mu)">4</span><span></span><span>  "host": "localhost"</span></div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:12px;align-items:start">
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;align-items:center;gap:9px;padding:10px 12px;background:var(--sf);border:1px solid var(--bd);border-radius:var(--rc);box-shadow:var(--sh2);font-size:13px"><span style="width:18px;height:18px;border-radius:50%;background:var(--add);display:flex;align-items:center;justify-content:center;flex:none"><span style="width:11px;height:11px;background:var(--bg);mask:url(https://unpkg.com/lucide-static@0.460.0/icons/check.svg) center/contain no-repeat"></span></span><span style="flex:1;font-weight:500">Copied to clipboard</span></div>
+                <div style="display:flex;align-items:flex-start;gap:9px;padding:10px 12px;background:var(--sf);border:1px solid var(--bd);border-radius:var(--rc);box-shadow:var(--sh2);font-size:13px"><span style="width:16px;height:16px;flex:none;margin-top:1px;background:var(--rem);mask:url(https://unpkg.com/lucide-static@0.460.0/icons/circle-alert.svg) center/contain no-repeat"></span><span style="flex:1;display:flex;flex-direction:column;gap:1px"><span style="font-weight:500">Invalid JSON</span><span style="color:var(--mu);font-size:12px">Line 4, col 12</span></span></div>
+              </div>
+              <div style="background:var(--sf);border:1px solid var(--bd);border-radius:var(--rc);box-shadow:var(--sh2);overflow:hidden;font-size:13px">
+                <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--bd)"><span style="width:14px;height:14px;background:var(--mu);mask:url(https://unpkg.com/lucide-static@0.460.0/icons/search.svg) center/contain no-repeat"></span><span style="flex:1;display:flex;align-items:center">json<span style="width:1.5px;height:15px;background:var(--ac);margin-left:1px"></span></span><span style="font-family:'Geist Mono',monospace;font-size:10px;padding:1px 5px;border:1px solid var(--bd);color:var(--mu);border-radius:4px">esc</span></div>
+                <div style="padding:4px;display:flex;flex-direction:column">
+                  <span style="display:flex;align-items:center;gap:8px;padding:7px 8px;background:var(--sf2);border-radius:calc(var(--ri) - 2px)"><span style="width:14px;height:14px;background:var(--aco);mask:url(https://unpkg.com/lucide-static@0.460.0/icons/braces.svg) center/contain no-repeat"></span><span style="flex:1;font-weight:500">JSON Formatter</span><span style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--mu)">↵</span></span>
+                  <span style="display:flex;align-items:center;gap:8px;padding:7px 8px;color:var(--mu)"><span style="width:14px;height:14px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/file-json.svg) center/contain no-repeat"></span><span style="flex:1;color:var(--tx)">JSON → TypeScript</span></span>
+                  <span style="display:flex;align-items:center;gap:8px;padding:7px 8px;color:var(--mu)"><span style="width:14px;height:14px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.460.0/icons/moon.svg) center/contain no-repeat"></span><span style="flex:1;color:var(--tx)">Toggle theme</span><span style="font-family:'Geist Mono',monospace;font-size:11px">⇧⌘L</span></span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-for>
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;neutrals&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;cool&quot;,&quot;warm&quot;],&quot;default&quot;:&quot;cool&quot;,&quot;tsType&quot;:&quot;'cool'|'warm'&quot;,&quot;section&quot;:&quot;Theme&quot;}}">
+const A = {
+  light: { ac: '#2f5bea', ach: '#2449c9', act: '#e7edfd', aco: '#1d3aa3', aci: '#ffffff' },
+  dark: { ac: '#7d9cff', ach: '#9db4ff', act: '#1c2442', aco: '#b9c9ff', aci: '#0b1330' }
+};
+const SEM = {
+  light: { '--add': '#1c7f45', '--addbg': '#e3f4e8', '--rem': '#c23a2b', '--rembg': '#fbe7e4', '--warn': '#8a5a00', '--warnbg': '#fdf1d8', '--ss': '#1c7f45', '--sn': '#a85a00', '--sb': '#9b3a8c', '--sh1': '0 1px 2px rgba(17,17,19,0.06)', '--sh2': '0 8px 24px rgba(17,17,19,0.08), 0 1px 3px rgba(17,17,19,0.06)' },
+  dark: { '--add': '#55c787', '--addbg': '#15301f', '--rem': '#f27a6a', '--rembg': '#3a1a16', '--warn': '#e6b450', '--warnbg': '#33280f', '--ss': '#55c787', '--sn': '#f0a35c', '--sb': '#e08ad4', '--sh1': '0 1px 2px rgba(0,0,0,0.4)', '--sh2': '0 8px 24px rgba(0,0,0,0.5)' }
+};
+const NEU = {
+  cool: {
+    light: { bg: '#fafafb', sf: '#ffffff', sf2: '#f2f2f4', tx: '#111113', mu: '#5e5e66', bd: '#e4e4e8', inkh: '#2c2c31' },
+    dark: { bg: '#0a0a0c', sf: '#111114', sf2: '#1b1b1f', tx: '#ededf0', mu: '#a0a0a9', bd: '#27272c', inkh: '#d2d2d8' }
+  },
+  warm: {
+    light: { bg: '#faf9f7', sf: '#ffffff', sf2: '#f2f0ed', tx: '#1a1918', mu: '#5f5b57', bd: '#e5e1dc', inkh: '#34312e' },
+    dark: { bg: '#0f0e0d', sf: '#161514', sf2: '#201e1c', tx: '#f2f0ed', mu: '#a9a49e', bd: '#2d2a27', inkh: '#d8d4cf' }
+  }
+};
+const S = [
+  { id: '2a', name: 'Soft', tag: 'Balanced', why: '8px corners, hairline borders and a faint shadow. Clean and familiar, the safest modern default.', font: "'Geist', system-ui, sans-serif", rb: '8px', ri: '8px', rc: '12px', rt: '6px', ink: false },
+  { id: '2b', name: 'Pill', tag: 'Friendliest', why: 'Fully rounded buttons and tags, roomier cards and a softer typeface. Closest to the “amigable y cercana” brief.', font: "'Figtree', system-ui, sans-serif", rb: '999px', ri: '10px', rc: '16px', rt: '999px', ink: false },
+  { id: '2c', name: 'Ink', tag: 'Most technical', why: 'Primary actions in ink (black or white). Cobalt is saved for focus, selection and links. Crisp and docs-like, with the highest contrast.', font: "'Geist', system-ui, sans-serif", rb: '6px', ri: '6px', rc: '10px', rt: '999px', ink: true }
+];
+
+class Component extends DCLogic {
+  vars(s, mode) {
+    const n = NEU[this.props.neutrals === 'warm' ? 'warm' : 'cool'][mode], a = A[mode];
+    return {
+      ...SEM[mode], '--bg': n.bg, '--sf': n.sf, '--sf2': n.sf2, '--tx': n.tx, '--mu': n.mu, '--bd': n.bd,
+      '--ac': a.ac, '--ach': a.ach, '--act': a.act, '--aco': a.aco, '--aci': a.aci, '--ring': a.act,
+      '--pb': s.ink ? n.tx : a.ac, '--pf': s.ink ? n.bg : a.aci, '--ph': s.ink ? n.inkh : a.ach,
+      '--f': s.font, '--rb': s.rb, '--ri': s.ri, '--rc': s.rc, '--rt': s.rt,
+      background: 'var(--bg)', color: 'var(--tx)', borderRadius: '16px', border: '1px solid ' + n.bd, overflow: 'hidden'
+    };
+  }
+  renderVals() {
+    return {
+      styles: S.map(s => ({ ...s, modes: [{ label: 'Light', icon: 'sun', style: this.vars(s, 'light') }, { label: 'Dark', icon: 'moon', style: this.vars(s, 'dark') }] }))
+    };
+  }
+}
+</script>
+</body>
+</html>
