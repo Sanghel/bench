@@ -75,7 +75,7 @@ src/
 
 ## Open decisions
 
-- **DEC-003** — Hosting target. The FMF fronts ship an nginx Dockerfile; a static host (Vercel/Netlify/Pages) is simpler here.
+- **DEC-003** — Hosting target. The FMF fronts ship an nginx Dockerfile; a static host (Vercel/Netlify/Pages) is simpler here. Vercel is proposed in [[BENCH-PLAT-002 Vercel deployment]].
 
 ## Changelog
 
