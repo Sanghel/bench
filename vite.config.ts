@@ -12,6 +12,8 @@ export default defineConfig({
       // Test-only helpers (setup, doubles). Aliased so specs can reach them
       // without the deep relative imports `rules/linting-and-types.md` bans.
       test: '/src/test',
+      // Root-level deploy config, read by its spec test (BENCH-PLAT-002).
+      'vercel.json': '/vercel.json',
     },
   },
 })
