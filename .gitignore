@@ -38,3 +38,6 @@ yarn.lock
 
 # Obsidian personal config
 .obsidian/
+
+# Specs live in the Obsidian vault; specs/ is a local symlink to it (ADR-0004)
+/specs

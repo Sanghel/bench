@@ -10,6 +10,7 @@
 ```bash
 nvm use            # Node 20
 pnpm install
+ln -s "<your vault>/bench/specs" specs   # specs live in Obsidian, see ADR-0004
 pnpm dev           # http://localhost:5173
 ```
 
@@ -28,14 +29,14 @@ Hosted on Vercel at **[bench.sanghel.dev](https://bench.sanghel.dev)**. Only `ma
 
 ## Repository map
 
-| Path                   | What                                                                                      |
-| ---------------------- | ----------------------------------------------------------------------------------------- |
-| `src/core/`            | shared: theme tokens + store, components, hooks, router, tool catalogue, format detection |
-| `src/modules/landing/` | landing page (`/`)                                                                        |
-| `src/modules/tools/`   | tools area (phase 1 placeholder)                                                          |
-| `specs/`               | **specs, the source of truth**, as an Obsidian vault. Start at `specs/00 Index.md`        |
-| `rules/`               | coding standards (adapted from the FMF front-ends)                                        |
-| `design/`              | Claude Design handoff: prototypes + transcript                                            |
+| Path                   | What                                                                                                             |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `src/core/`            | shared: theme tokens + store, components, hooks, router, tool catalogue, format detection                        |
+| `src/modules/landing/` | landing page (`/`)                                                                                               |
+| `src/modules/tools/`   | tools area (phase 1 placeholder)                                                                                 |
+| `specs/`               | **specs, the source of truth**: a local symlink to the Obsidian vault (not in git). Start at `specs/00 Index.md` |
+| `rules/`               | coding standards (adapted from the FMF front-ends)                                                               |
+| `design/`              | Claude Design handoff: prototypes + transcript                                                                   |
 
 ## Stack
 
