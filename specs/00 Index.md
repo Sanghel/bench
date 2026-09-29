@@ -1,12 +1,12 @@
 ---
 title: bench. — spec index
 tags: [index]
-last_reviewed: 2026-09-28
+last_reviewed: 2026-09-29
 ---
 
 # bench. — spec index
 
-Map of content for the bench. vault. Rules for writing specs: `rules/specs.md`.
+Map of content for the bench. vault. Rules for writing specs: `rules/specs.md`. Governing principles: [[Constitution]] (v1.0.0).
 
 > **bench.** — developer tools that never leave your browser. Format, convert, compare and decode, all local.
 
