@@ -1,0 +1,12 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.main {
+  flex: 1;
+}

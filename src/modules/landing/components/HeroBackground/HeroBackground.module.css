@@ -1,0 +1,72 @@
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  50% {
+    opacity: var(--o);
+    transform: translateY(0);
+  }
+}
+
+.root {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+}
+
+.dots,
+.glow,
+.hotDots,
+.layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.dots {
+  background-image: radial-gradient(circle, var(--border-strong) 1px, transparent 1.4px);
+  background-size: 24px 24px;
+  opacity: 0.45;
+}
+
+.glow {
+  background: radial-gradient(560px circle at var(--mx) var(--my), var(--glow), transparent 70%);
+}
+
+.hotDots {
+  background-image: radial-gradient(circle, var(--accent) 1.2px, transparent 1.7px);
+  background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(240px circle at var(--mx) var(--my), #000, transparent 70%);
+  mask-image: radial-gradient(240px circle at var(--mx) var(--my), #000, transparent 70%);
+  opacity: 0.7;
+}
+
+.spotlight {
+  -webkit-mask-image: radial-gradient(220px circle at var(--mx) var(--my), #000, transparent 75%);
+  mask-image: radial-gradient(220px circle at var(--mx) var(--my), #000, transparent 75%);
+}
+
+.glyph {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--text-muted);
+  animation-name: twinkle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glyph {
+    animation: none;
+  }
+}

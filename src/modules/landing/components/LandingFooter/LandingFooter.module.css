@@ -1,0 +1,47 @@
+.footer {
+  border-top: 1px solid var(--border);
+}
+
+.inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 28px var(--gutter);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.credit {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.credit img {
+  display: block;
+}
+
+.heart {
+  color: var(--danger);
+  font-size: 14px;
+}
+
+.author {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.author:hover {
+  color: var(--text);
+}
+
+.links {
+  margin-left: auto;
+  display: flex;
+  gap: var(--space-5);
+}

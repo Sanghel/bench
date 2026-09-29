@@ -1,25 +1,48 @@
-# CODING AGENTS: READ THIS FIRST
+# bench.
 
-This is a **handoff bundle** from Claude Design (claude.ai/design).
+**The dev tools you reach for, in one quiet place.** Format, convert, compare and decode in your browser. Nothing is uploaded and nothing is tracked.
 
-A user mocked up designs in HTML/CSS/JS using an AI design tool, then exported this bundle so a coding agent can implement the designs for real.
+- **Phase 1 (this):** base project + landing page.
+- **Phase 2:** tools dashboard with ⌘K palette, favorites and the first live tools. See `specs/tools/`.
 
-## What you should do — IMPORTANT
+## Getting started
 
-**Read the chat transcripts first.** There are 1 chat transcript(s) in `chats/`. The transcripts show the full back-and-forth between the user and the design assistant — they tell you **what the user actually wants** and **where they landed** after iterating. Don't skip them. The final HTML files are the output, but the chat is where the intent lives.
+```bash
+nvm use            # Node 20
+pnpm install
+pnpm dev           # http://localhost:5173
+```
 
-**Read `project/Bench Dashboard.dc.html` in full.** The user had this file open when they triggered the handoff, so it's almost certainly the primary design they want built. Read it top to bottom — don't skim. Then **follow its imports**: open every file it pulls in (shared components, CSS, scripts) so you understand how the pieces fit together before you start implementing.
+| Script                        |                                         |
+| ----------------------------- | --------------------------------------- |
+| `pnpm dev`                    | Vite dev server                         |
+| `pnpm build`                  | typecheck + production build to `dist/` |
+| `pnpm lint`                   | ESLint, zero warnings                   |
+| `pnpm typecheck`              | `tsc --noEmit`                          |
+| `pnpm test` / `test:coverage` | Vitest (80% gate)                       |
+| `pnpm format`                 | Prettier                                |
 
-**If anything is ambiguous, ask the user to confirm before you start implementing.** It's much cheaper to clarify scope up front than to build the wrong thing.
+## Deploy
 
-## About the design files
+Hosted on Vercel at **[bench.sanghel.dev](https://bench.sanghel.dev)**. Only `main` deploys: every merge of the `develop → main` phase PR goes to production, and no other branch builds. The config lives in `vercel.json` (SPA rewrite, cache and security headers). See `specs/platform/BENCH-PLAT-002 Vercel deployment.md`.
 
-The design medium is **HTML/CSS/JS** — these are prototypes, not production code. Your job is to **recreate them pixel-perfectly** in whatever technology makes sense for the target codebase (React, Vue, native, whatever fits). Match the visual output; don't copy the prototype's internal structure unless it happens to fit.
+## Repository map
 
-**Don't render these files in a browser or take screenshots unless the user asks you to.** Everything you need — dimensions, colors, layout rules — is spelled out in the source. Read the HTML and CSS directly; a screenshot won't tell you anything they don't.
+| Path                   | What                                                                                      |
+| ---------------------- | ----------------------------------------------------------------------------------------- |
+| `src/core/`            | shared: theme tokens + store, components, hooks, router, tool catalogue, format detection |
+| `src/modules/landing/` | landing page (`/`)                                                                        |
+| `src/modules/tools/`   | tools area (phase 1 placeholder)                                                          |
+| `specs/`               | **specs, the source of truth**, as an Obsidian vault. Start at `specs/00 Index.md`        |
+| `rules/`               | coding standards (adapted from the FMF front-ends)                                        |
+| `design/`              | Claude Design handoff: prototypes + transcript                                            |
 
-## Bundle contents
+## Stack
 
-- `README.md` — this file
-- `chats/` — conversation transcripts (read these!)
-- `project/` — the `Sistema de herramientas para desarrolladores` project files (HTML prototypes, assets, components)
+Vite 8 · React 19 · TypeScript 6 (strict) · react-router-dom 7 · Zustand 5 · lucide-react · CSS Modules + custom properties · Vitest 4 + Testing Library + happy-dom.
+
+Design system: **Ink × Cobalt**. Geist and Geist Mono; ink for primary actions, cobalt for focus, selection and links. See `rules/theming.md`.
+
+---
+
+Crafted with ♥ and React + TypeScript by [Sanghel González](https://sanghel.dev).
