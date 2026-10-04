@@ -8,7 +8,7 @@
 ## Getting started
 
 ```bash
-nvm use            # Node 20
+nvm use            # Node 22
 pnpm install
 pnpm dev           # http://localhost:5173
 ```
