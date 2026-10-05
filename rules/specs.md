@@ -1,6 +1,6 @@
 # Specs — spec-driven development
 
-`specs/` is the **source of truth for intent**. It is an Obsidian vault: open the `specs/` folder as a vault (or symlink it into your main vault). Code implements specs; it never overrides them. When code and spec disagree, fix one of them in the same PR.
+`specs/` is the **source of truth for intent**. The notes live in the Obsidian vault (`bench/specs/`); in the repo, `specs/` is a gitignored symlink to that folder (ADR-0004). Create it once per clone: `ln -s "<your vault>/bench/specs" specs`. Governing principles: `specs/Constitution.md`. Code implements specs; it never overrides them. When code and spec disagree, fix one of them in the same PR.
 
 Adapted from the FMF spec governance (`fixmyfees/docs → fmf-v2-spec/SPEC-GOVERNANCE.md`).
 
@@ -53,3 +53,7 @@ tags: [spec, landing]
 - Tags: `#spec`, `#adr`, `#phase-1`, `#phase-2`, `#open-decision`.
 - `00 Index.md` is the map of content — add every new note there.
 - No `.obsidian/` folder is committed (it's personal config).
+
+## Spec Kit
+
+Spec Kit (`/speckit-*`) writes its feature folders (`specs/NNN-slug/spec.md`, `plan.md`, `tasks.md`) through the symlink, so they land in the vault too. Each feature folder references the `BENCH-*` spec it implements, and plans run a Constitution Check.

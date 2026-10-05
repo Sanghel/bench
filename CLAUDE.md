@@ -4,7 +4,7 @@ Developer tools that never leave the browser. React 19 + TypeScript + Vite SPA (
 
 ## Specs first — `specs/`
 
-`specs/` is the source of truth for intent (an Obsidian vault). **Read the relevant spec before writing code, and update it in the same change.** Start at `specs/00 Index.md`; process in `rules/specs.md`.
+`specs/` is the source of truth for intent. It is a **local symlink to the Obsidian vault** (`~/Documents/Obsidian Vault/bench/specs`) and is not tracked in git: write specs there, never as repo files (ADR-0004). The project constitution is `specs/Constitution.md` (read by Spec Kit through `.specify/memory/constitution.md`). **Read the relevant spec before writing code, and update it in the same change.** Start at `specs/00 Index.md`; process in `rules/specs.md`.
 
 ## Project standards live in `rules/`
 
