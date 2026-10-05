@@ -8,7 +8,7 @@
 ## Getting started
 
 ```bash
-nvm use            # Node 20
+nvm use            # Node 22
 pnpm install
 ln -s "<your vault>/bench/specs" specs   # specs live in Obsidian, see ADR-0004
 pnpm dev           # http://localhost:5173
