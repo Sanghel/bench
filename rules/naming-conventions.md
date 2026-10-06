@@ -38,4 +38,4 @@ Explicit on every function — see `linting-and-types.md`. Components return `JS
 
 ## Specs
 
-Spec notes in `specs/` are named `<SPEC-ID> <Title>.md` (e.g. `BENCH-LAND-001 Landing page.md`). See `rules/specs.md`.
+Specs live in the OpenSpec store `bench` (Obsidian vault), not in the repo. Capabilities are kebab-case nouns (`landing-page`, `openspec/specs/landing-page/spec.md`); changes are kebab-case verb phrases (`add-tools-dashboard-shell`). See `rules/specs.md`.

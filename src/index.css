@@ -1,6 +1,6 @@
 @import './core/theme/tokens.css';
 
-/* Type, shape and space — theme-independent. See specs/design-system. */
+/* Type, shape and space — theme-independent. See the design-tokens spec (OpenSpec store bench). */
 :root {
   --font-sans: 'Geist', system-ui, sans-serif;
   --font-mono: 'Geist Mono', ui-monospace, monospace;

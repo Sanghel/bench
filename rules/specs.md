@@ -1,59 +1,58 @@
-# Specs — spec-driven development
+# Specs — spec-driven development with OpenSpec
 
-`specs/` is the **source of truth for intent**. The notes live in the Obsidian vault (`bench/specs/`); in the repo, `specs/` is a gitignored symlink to that folder (ADR-0004). Create it once per clone: `ln -s "<your vault>/bench/specs" specs`. Governing principles: `specs/Constitution.md`. Code implements specs; it never overrides them. When code and spec disagree, fix one of them in the same PR.
+Specs are the **source of truth for intent**. They live only in the Obsidian vault, in the OpenSpec **store `bench`** (`<vault>/bench/openspec/`, ADR-0004). This repo holds just `openspec/config.yaml` with `store: bench`, so `openspec` and `/opsx:*` run from here act on the vault (`Using OpenSpec root: bench`). Never create real `openspec/specs` or `openspec/changes` folders in the repo: they would shadow the store. Governing principles: `bench/docs/constitution.md` in the vault. Code implements specs; it never overrides them. When code and spec disagree, fix one of them in the same change.
 
-Adapted from the FMF spec governance (`fixmyfees/docs → fmf-v2-spec/SPEC-GOVERNANCE.md`).
+Adapted from the FMF spec governance (`fixmyfees/docs → fmf-v2-spec/SPEC-GOVERNANCE.md`) and the FMF OpenSpec store.
+
+## Setup (once per machine)
+
+```bash
+openspec store register "<vault>/bench" --id bench --yes
+openspec list --specs   # from the repo: prints "Using OpenSpec root: bench"
+```
+
+## Store layout
+
+```
+<vault>/bench/
+├── openspec/
+│   ├── config.yaml                  ← project context + per-artifact rules
+│   ├── specs/<capability>/spec.md   ← what the system IS today (permanent)
+│   └── changes/
+│       ├── <change-id>/             ← proposal.md, design.md, tasks.md, specs/ (deltas)
+│       └── archive/                 ← closed changes
+└── docs/                            ← constitution.md, decisions.md (roadmap + DEC log), adr/
+```
 
 ## Flow
 
 ```
-idea → spec (draft) → review → accepted → task issue(s) → code + tests → spec status: implemented
+idea → /opsx:propose (proposal + delta specs + design + tasks) → review → issue(s) → /opsx:apply (code + tests)
+     → PR to develop → phase PR develop → main → /opsx:archive (deltas merged into specs/)
 ```
 
-1. Write or update the spec **before** code. Start from `specs/_templates/Spec.md`.
-2. Every acceptance criterion gets an id (`AC-1`, `AC-2`…) and at least one test.
-3. A PR that implements a spec links it in the description and updates `status` / `last_reviewed`.
-4. Decisions that shape more than one spec become an ADR (`specs/adr/`, template `_templates/ADR.md`).
-5. Unresolved questions go in the spec's **Open decisions** as `DEC-NNN`, and in `specs/00 Index.md`.
+1. Write or update the change **before** code: `/opsx:propose <change-id>`, then `openspec validate <change-id> --strict`.
+2. Each requirement has at least one `#### Scenario:` (WHEN/THEN), and every scenario gets at least one automated test.
+3. `design.md` includes a Constitution Check; `tasks.md` groups land their own tests.
+4. A PR that implements a change names the change id in its description; `tasks.md` is ticked as work lands, and `## Seguimiento` in `proposal.md` lists issues and PRs.
+5. Decisions that shape more than one capability become an ADR in `bench/docs/adr/`.
+6. Unresolved questions are recorded as `DEC-NNN` in the change (or spec) and in `bench/docs/decisions.md`.
+7. Archive (`/opsx:archive <change-id>`) only after the work is released to `main`.
 
 ## Identifiers
 
-| Artifact             | Scheme                       | Example               |
-| -------------------- | ---------------------------- | --------------------- |
-| Spec                 | `BENCH-{AREA}-{NNN}`         | `BENCH-LAND-001`      |
-| Acceptance criterion | `AC-{n}` inside a spec       | `BENCH-LAND-001 AC-4` |
-| ADR                  | `ADR-{NNNN}`                 | `ADR-0002`            |
-| Open decision        | `DEC-{NNN}` (global counter) | `DEC-003`             |
+| Artifact      | Scheme                                 | Example                     |
+| ------------- | -------------------------------------- | --------------------------- |
+| Capability    | kebab-case noun for a durable behavior | `landing-page`              |
+| Change        | kebab-case verb phrase                 | `add-tools-dashboard-shell` |
+| ADR           | `ADR-{NNNN}`                           | `ADR-0002`                  |
+| Open decision | `DEC-{NNN}` (global counter)           | `DEC-003`                   |
 
-Areas: `PLAT` (platform/base), `DS` (design system), `LAND` (landing), `TOOLS` (dashboard + tools).
-
-## Frontmatter (mandatory)
-
-```yaml
----
-spec_id: BENCH-LAND-001
-title: Landing page
-status: draft | accepted | implemented | deprecated
-phase: 1
-owner: Sanghel González
-last_reviewed: YYYY-MM-DD
-design: '[[design/project/Bench Landing.dc.html]]' # or a plain path
-depends_on: ['[[BENCH-DS-001 Ink × Cobalt tokens]]']
-code: [src/modules/landing/]
-tests: [src/modules/landing/**/__tests__/]
-open_decisions: [DEC-001]
-tags: [spec, landing]
----
-```
+Legacy Spec Kit ids (`BENCH-{AREA}-{NNN}`, `AC-n`, `FR-NNN`, `SC-NNN`) stay in the spec text for traceability; new requirements may keep using `AC-n` labels in scenarios.
 
 ## Obsidian conventions
 
-- File name = `<ID> <Title>.md`, so `[[BENCH-LAND-001 Landing page]]` links resolve.
-- Link specs with wikilinks; link code with plain relative paths (Obsidian can't open them, GitHub can).
-- Tags: `#spec`, `#adr`, `#phase-1`, `#phase-2`, `#open-decision`.
-- `00 Index.md` is the map of content — add every new note there.
+- Wikilinks use the full path from the vault root: `[[bench/openspec/specs/landing-page/spec|landing-page]]`.
+- Link code with plain relative paths (Obsidian can't open them, GitHub can).
+- Frontmatter is allowed in OpenSpec files (e.g. `legacy_id`, `status`, `issue`, `pr`, `tags`).
 - No `.obsidian/` folder is committed (it's personal config).
-
-## Spec Kit
-
-Spec Kit (`/speckit-*`) writes its feature folders (`specs/NNN-slug/spec.md`, `plan.md`, `tasks.md`) through the symlink, so they land in the vault too. Each feature folder references the `BENCH-*` spec it implements, and plans run a Constitution Check.

@@ -1,6 +1,6 @@
 # Theming — Ink × Cobalt, Dark / Light
 
-Source design: `design/project/Bench Design System v3.dc.html`. Spec: `specs/design-system/BENCH-DS-001 Ink × Cobalt tokens.md`.
+Source design: `design/project/Bench Design System v3.dc.html`. Spec: OpenSpec capability `design-tokens` (legacy BENCH-DS-001) in the store `bench`.
 
 ## The style rule
 

@@ -3,14 +3,14 @@
 **The dev tools you reach for, in one quiet place.** Format, convert, compare and decode in your browser. Nothing is uploaded and nothing is tracked.
 
 - **Phase 1 (this):** base project + landing page.
-- **Phase 2:** tools dashboard with ⌘K palette, favorites and the first live tools. See `specs/tools/`.
+- **Phase 2:** tools dashboard with ⌘K palette, favorites and the first live tools. See the OpenSpec change `add-tools-dashboard-shell` (`openspec show add-tools-dashboard-shell`).
 
 ## Getting started
 
 ```bash
 nvm use            # Node 22
 pnpm install
-ln -s "<your vault>/bench/specs" specs   # specs live in Obsidian, see ADR-0004
+openspec store register "<your vault>/bench" --id bench --yes   # specs live in Obsidian (OpenSpec store), see rules/specs.md
 pnpm dev           # http://localhost:5173
 ```
 
@@ -25,18 +25,18 @@ pnpm dev           # http://localhost:5173
 
 ## Deploy
 
-Hosted on Vercel at **[bench.sanghel.dev](https://bench.sanghel.dev)**. Only `main` deploys: every merge of the `develop → main` phase PR goes to production, and no other branch builds. The config lives in `vercel.json` (SPA rewrite, cache and security headers). See `specs/platform/BENCH-PLAT-002 Vercel deployment.md`.
+Hosted on Vercel at **[bench.sanghel.dev](https://bench.sanghel.dev)**. Only `main` deploys: every merge of the `develop → main` phase PR goes to production, and no other branch builds. The config lives in `vercel.json` (SPA rewrite, cache and security headers). See the `vercel-deployment` spec in the OpenSpec store.
 
 ## Repository map
 
-| Path                   | What                                                                                                             |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `src/core/`            | shared: theme tokens + store, components, hooks, router, tool catalogue, format detection                        |
-| `src/modules/landing/` | landing page (`/`)                                                                                               |
-| `src/modules/tools/`   | tools area (phase 1 placeholder)                                                                                 |
-| `specs/`               | **specs, the source of truth**: a local symlink to the Obsidian vault (not in git). Start at `specs/00 Index.md` |
-| `rules/`               | coding standards (adapted from the FMF front-ends)                                                               |
-| `design/`              | Claude Design handoff: prototypes + transcript                                                                   |
+| Path                   | What                                                                                                                                |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `src/core/`            | shared: theme tokens + store, components, hooks, router, tool catalogue, format detection                                           |
+| `src/modules/landing/` | landing page (`/`)                                                                                                                  |
+| `src/modules/tools/`   | tools area (phase 1 placeholder)                                                                                                    |
+| `openspec/config.yaml` | points OpenSpec at the store `bench` in the Obsidian vault, **the source of truth** for specs (not in git). `openspec list --specs` |
+| `rules/`               | coding standards (adapted from the FMF front-ends)                                                                                  |
+| `design/`              | Claude Design handoff: prototypes + transcript                                                                                      |
 
 ## Stack
 

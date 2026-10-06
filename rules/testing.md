@@ -32,4 +32,4 @@ src/modules/landing/pages/home/                → pages/home/__tests__/HomePage
 - One `describe` per unit, one `it` per observable behavior; names are full English sentences.
 - Aliases only (`core/`, `modules/`, `test/`), never `../../../`.
 - Don't rely on browser APIs happy-dom lacks (`matchMedia` is mocked; `scrollIntoView`/`scrollTo` must be stubbed per test).
-- Every acceptance criterion in a spec maps to at least one test — list the test file in the spec's `tests:` frontmatter.
+- Every requirement scenario (and legacy `AC-n`) in a spec maps to at least one test — name the test file in the change's `tasks.md`.

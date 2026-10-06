@@ -17,8 +17,6 @@ coverage
 .vscode/
 .cursor/
 .claude/*
-# Spec Kit skills (/speckit-*) are shared with the repo
-!.claude/skills/
 .idea
 .DS_Store
 *.suo
@@ -38,6 +36,3 @@ yarn.lock
 
 # Obsidian personal config
 .obsidian/
-
-# Specs live in the Obsidian vault; specs/ is a local symlink to it (ADR-0004)
-/specs
